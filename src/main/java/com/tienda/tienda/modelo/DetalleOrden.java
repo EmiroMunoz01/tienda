@@ -1,9 +1,12 @@
 package com.tienda.tienda.modelo;
 
+import org.hibernate.annotations.ManyToAny;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -33,7 +36,7 @@ public class DetalleOrden {
     private Orden orden;
 
     // 12 hacemos la relacion con producto, pero esto no lo colocamos en Producto, porque no necesita saber el detalle de la Orden
-    @OneToOne
+    @ManyToOne
     private Producto producto;
 
     private Integer id;
