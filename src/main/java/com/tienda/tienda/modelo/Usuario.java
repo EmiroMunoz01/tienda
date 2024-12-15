@@ -9,22 +9,21 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Data
 
 @Entity
 @Table(name = "usuario")
 
 public class Usuario {
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,9 +37,33 @@ public class Usuario {
     private String tipousuario;
     private String clave;
 
+
+    
+
+
     // 1 le diremos que en algun momento queremos obtener una lista de productos
     // crearemos la anotacion con JPA, le diremos que es una relacion de 1 a muchos,
     //3 y que estara mapeada con el capo de usuario, tambien tendremos que mapearlo con JPA
+
+
+
+    
+    public Usuario(Integer id, String nombre, String nombreusuario, String email, String direccion, String telefono,
+            String tipousuario, String clave) {
+        this.id = id;
+        this.nombre = nombre;
+        this.nombreusuario = nombreusuario;
+        this.email = email;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.tipousuario = tipousuario;
+        this.clave = clave;
+    }
+
+
+    public Usuario() {
+    }
+
 
     @OneToMany(mappedBy = "usuario")
     private List<Producto> productos;
