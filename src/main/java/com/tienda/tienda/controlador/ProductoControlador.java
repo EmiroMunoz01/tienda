@@ -1,10 +1,13 @@
 package com.tienda.tienda.controlador;
 
+import java.util.Optional;
+
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -42,6 +45,19 @@ public class ProductoControlador {
 
         productoServicio.guardarProducto(producto);
         return "redirect:/productos";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String editar(@PathVariable Integer id) {
+        Producto producto = new Producto();
+        // es lo que nos devuelve cuando nos retorna la busqueda de un objeto de tipo
+        // producto
+        Optional<Producto> optionalProducto = productoServicio.obtenerProductoPorId(id);
+        producto = optionalProducto.get();
+
+        LOGGER.info("Producto buscado: {}", producto);
+
+        return "productos/editar";
     }
 
 }

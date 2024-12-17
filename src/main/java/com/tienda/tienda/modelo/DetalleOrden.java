@@ -1,6 +1,5 @@
 package com.tienda.tienda.modelo;
 
-import org.hibernate.annotations.ManyToAny;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
