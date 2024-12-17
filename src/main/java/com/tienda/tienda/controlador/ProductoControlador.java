@@ -48,7 +48,7 @@ public class ProductoControlador {
     }
 
     @GetMapping("/editar/{id}")
-    public String editar(@PathVariable Integer id) {
+    public String editar(@PathVariable Integer id, Model model) {
         Producto producto = new Producto();
         // es lo que nos devuelve cuando nos retorna la busqueda de un objeto de tipo
         // producto
@@ -56,7 +56,7 @@ public class ProductoControlador {
         producto = optionalProducto.get();
 
         LOGGER.info("Producto buscado: {}", producto);
-
+        model.addAttribute("producto", producto);
         return "productos/editar";
     }
 
