@@ -60,4 +60,12 @@ public class ProductoControlador {
         return "productos/editar";
     }
 
+    @PostMapping("/actualizar")
+    public String actualizar(Producto producto) {
+
+        productoServicio.actualizarProducto(producto);
+
+        return "redirect:/productos";
+    }
+
 }
