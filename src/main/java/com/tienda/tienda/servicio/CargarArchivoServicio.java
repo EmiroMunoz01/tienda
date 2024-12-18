@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class CargarArchivoServicio {
 
-    private String carpeta = "imagen//";
+    private String carpeta = "imagenes//";
 
     public String guardarImagen(MultipartFile archivo) throws IOException {
         if (!archivo.isEmpty()) {
@@ -22,7 +22,7 @@ public class CargarArchivoServicio {
     }
 
     public void eliminarImagen(String nombre) {
-        String ruta = "image//";
+        String ruta = "imagenes//";
         File file = new File(ruta + nombre);
         file.delete();
     }
